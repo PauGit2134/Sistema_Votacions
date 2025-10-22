@@ -14,12 +14,11 @@ const store = useAppStore()
 
 const chartData = computed(() => ({
   labels: ['Opció 0', 'Opció 1', 'Opció 2', 'Opció 3'],
-  datasets: [
-    {
-      label: 'Vots',
-      data: store.votos,
-      backgroundColor: ['#f87979', '#a1cfff', '#f7dc6f', '#82e0aa']
-    }
-  ]
+  datasets: [{
+    label: 'Vots',
+    data: store.votos,
+    backgroundColor: ['#f87979', '#a1cfff', '#f7dc6f', '#82e0aa']
+  }]
 }))
 </script>
+

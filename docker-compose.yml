@@ -1,0 +1,20 @@
+version: '3.9'
+
+services:
+  frontend:
+    build: ./client   # carpeta del frontend
+    ports:
+      - "8080:5173"   # 8080 a host → 5173 dins el contenidor
+    volumes:
+      - ./client:/app
+      - /app/node_modules
+    depends_on:
+      - backend
+
+  backend:
+    build: ./backend  # carpeta del backend
+    ports:
+      - "3999:3999"
+    volumes:
+      - ./backend:/app
+      - /app/node_modules

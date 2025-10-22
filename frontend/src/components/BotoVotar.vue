@@ -1,5 +1,5 @@
 <template>
-  <v-btn @click="$emit('votar', opcio)">
+  <v-btn color="secondary" @click="$emit('votar', opcio)">
     Votar opció {{ opcio }} ({{ total }} vots)
   </v-btn>
 </template>

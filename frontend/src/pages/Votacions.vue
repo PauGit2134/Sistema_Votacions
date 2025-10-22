@@ -1,10 +1,11 @@
 <template>
   <v-container>
+    <h2>Hola, {{ store.loginInfo.username }}!</h2>
     <BotoVotar
       v-for="(vot, index) in store.votos"
       :key="index"
-      :total="vot"
       :opcio="index"
+      :total="vot"
       @votar="registrarVot"
     />
     <GraficVots :vots="store.votos" />
@@ -27,9 +28,7 @@ onMounted(() => {
   if (!store.isLoggedIn) router.push('/')
   wsService = new WebSocketService('ws://localhost:3999')
   wsService.connect()
-  wsService.onVoteUpdate((nousVots) => {
-    store.setVotos(nousVots)
-  })
+  wsService.onVoteUpdate((nousVots) => store.setVotos(nousVots))
 })
 
 function registrarVot(opcio) {
