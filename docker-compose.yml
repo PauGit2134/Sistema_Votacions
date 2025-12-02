@@ -1,20 +1,21 @@
-version: '3.9'
-
 services:
-  frontend:
-    build: ./client   # carpeta del frontend
+  client:
+    build: ./client
     ports:
-      - "8080:5173"   # 8080 a host → 5173 dins el contenidor
+      - "8080:3000" # Mapear el puerto 8080 del host al 3000 del contenedor (puerto real de Vite)
     volumes:
       - ./client:/app
-      - /app/node_modules
+      - /app/node_modules # Asegura que node_modules dentro del contenedor no sea sobrescrito por el volumen local vacío
     depends_on:
-      - backend
+      - server
+    environment:
+      # Definimos la variable de entorno para la URL del WebSocket
+      - VITE_WEBSOCKET_URL=ws://host.docker.internal:3999 # Usamos el alias host.docker.internal para acceder al host
 
-  backend:
-    build: ./backend  # carpeta del backend
+  server:
+    build: ./server
     ports:
-      - "3999:3999"
+      - "3999:3999" # Mapear el puerto 3999 del host al 3999 del contenedor
     volumes:
-      - ./backend:/app
-      - /app/node_modules
+      - ./server:/app
+      - /app/node_modules # Asegura que node_modules dentro del contenedor no sea sobrescrito por el volumen local vacío
