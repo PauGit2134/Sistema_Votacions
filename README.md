@@ -55,7 +55,7 @@ Aquest mètode és ideal per desenvolupar la part web de l'aplicació. Necessita
     cd client
     npm run dev
     ```
-    *L'aplicació web serà accessible a http://localhost:3000.*
+    *L'aplicació web serà accessible a http://localhost:8080.*
 
 ### 2. Execució amb Docker (Entorn Contenidoritzat)
 
