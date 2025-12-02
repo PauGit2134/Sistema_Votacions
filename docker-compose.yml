@@ -8,9 +8,6 @@ services:
       - /app/node_modules # Asegura que node_modules dentro del contenedor no sea sobrescrito por el volumen local vacío
     depends_on:
       - server
-    environment:
-      # Definimos la variable de entorno para la URL del WebSocket
-      - VITE_WEBSOCKET_URL=ws://host.docker.internal:3999 # Usamos el alias host.docker.internal para acceder al host
 
   server:
     build: ./server
